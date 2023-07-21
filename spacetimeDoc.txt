@@ -1,0 +1,572 @@
+# SpaceTime Doc
+
+- Material Complementar
+
+https://efficient-sloth-d85.notion.site/Trilha-Ignite-e2ed19139b544a46984a28b65dcd4aae
+
+- Git projeto Completo
+
+https://github.com/rocketseat-education/nlw-12-spacetime-ignite
+
+- figma
+
+https://www.figma.com/community/file/1240070456276424762
+
+nlw SpaceTime
+
+### Server
+
+- start project
+ create package.json
+
+$ npm init -y
+
+- install typeScript
+ como dependencia de desenvolvimento
+ 
+$ npm i typescript -D
+$ npm i @types/node -D
+
+- para configurar o typescript no nosso projecto vamos rodar o npx 
+ npx eh um forma de executar binarios que sao instalados pelas bibliotecas do nosso projeto 
+
+- criando arquivo tsconfig.json
+ Que ele possui as configuracoes do TypeScript dentro do nosso projecto
+ 
+$ npx tsc --init 
+
+**tsconfig.json**
+
+l14 "target": "es2016",
+change
+    "target": "es2020",
+
++ src/server.ts
+
+- install tsx
+
+$ npm i tsx -D
+
+- create Script
+
+$
+"scripts": {
+    "dev": "tsx watch src/server.ts"
+},
+
+- to run typescript
+
+$ npm run dev
+
+- install fastify
+
+$ npm i fastify
+
+**server.ts**
+
+- maybe install httpie
+
+- install eslint -D
+
+$ npm install eslint -D
+
+- caso queira configurar voce mesmo o seu eslint
+$ npm eslint --init
+
+- install eslint da rocketseat
+
+$ npm i @rocketseat/eslint-config -D
+
++ .eslintrc.json
+**.eslintrs.json**
+
+$
+{
+  "extends": [
+    "@rocketseat/eslint-config/node"
+  ]
+}
+
+- para corrigir todos os arquivos de um projeto que ja estava criado
+ criando script
+ 
+**package.json**
+
+$ l8 "lint": "eslint src --ext .ts --fix"
+
+- to run lint for all
+
+$ npm run lint
+
+- install prisma
+
+$ npm i prisma -D
+
+- para abrir o help do prisma
+
+$ npx prisma -h
+
+- criando um banco sqlite
+
+$ npx prisma init --datasource-provider SQLite
+
+- Definir as tabelas do banco de dados
+
+**schema.prisma**
+
+$
+model User {
+  id   String @id @default(uuid())
+  name String
+}
+
+- para criar realmente a tabela no banco de dados, precisamos executar um comando
+ ele le o arquivo schema.prisma
+ e vai detectar automaticamente todas as alteracoes feitas nesse arquivo.
+ agora deve-se dar o nome para a migration 
+ migration eh um sistema de controle de versao do banco de dados
+ eh uma forma de adicionar aos poucos
+ criar a estrutura do meu banco de dados aos poucos
+ e com o tempo esse banco pode ir mudando
+ criar ou retirar colunas, criar ou retirar tabelas
+ cada migration eh como se fosse um commit
+ uma alteracao feita no banco 
+
+$ npx prisma migrate dev
+$ create users table
+
+- pode-se user ferramentes que acesse bancos sql para ver o banco ali dentro
+ ou pode-se usar a ferramenta integrada do prisma
+ chamada Studio
+ 
+ ele vai abrir no seu navegador
+ 
+$ npx prima studio
+
+- studio prisma
+ Criando nosso primeiro usuario
+
+**http://localhost:5555/**
+
+add record
+name Diego Fernandes
+save
+
+Stop prisma studio
+
+- Acessar o bando de dados de dentro do nosso server da api
+ instalando 
+ 
+$ npm i @prisma/client
+
+**server.ts**
+
+### Web
+
+### Nextjs
+ 
+$ npx create-next-app@latest web --use-npm
+
+$ npm run dev
+
+### Components
+### Propriedades
+
++ src/components/Button.tsx
+
+testando
+
+$
+const styles = {
+  color: '#F00'
+}
+
+interface ButtonProps {
+  title: string
+}
+
+export function Button(props: ButtonProps) {
+  return (
+    <p style={styles}>
+      {props.title}
+    </p>
+  )
+}
+
+
+### Components
+### Propriedades
+
+### Roteamento
+
+- O next tras esse sistema de ter varias paginas de forma pronta
+ No Next, tudo que eu colocar dentro do app
+ todo o arquivo que tiver o nome page, vai automaticamente virar uma rota da nossa aplicacao 
+ 
+ Se eu criar uma pasta
+ 
+ 
+ 
+ + ignite/page.tsx
+ 
+$ 
+export default function Ignite() {
+	return <h1>Ignite</h1>
+}
+
+$ http://localhost:3000/ignite
+
+
+
+- Esse arquivo se tornou uma pagina
+	O Next automaticamente edintifica a estrutura de paginas, dentro dessa pasta app, como sendo as paginas da minha aplicacao 
+	
+- Tudo que eu colocar dentro da pasta app, eh automaticamente as paginas da nossa aplicacao 
+	Dai podemos criar quantas subpastas quiser
+	
+	
+	
+ + ignite/depoimentos/page.tsx
+ 
+$ http://localhost:3000/ignite/depoimentos
+
+$ 
+export default function Depos() {
+  return <h1>Depoimento</h1>
+}
+
+
+
+### Tailwind CSS
+
+- Utilit class
+
+
+Del
+-- button.tsx
+-- Ignite/page.tsx
+
+**page.tsx**
+
+$
+export default function Home() {
+  return (
+    <div className="text-2xl font-bold uppercase w-20 h-20 bg-red-500 rounded-full m-10">
+      Oi
+    </div>
+  )
+}
+
+
+### ESLint + Prettier Tailwind
+
+Install
+
+$ npm i @rocketseat/eslint-config -D
+
+install plugin
+
+$ npm i prettier-plugin-tailwindcss -D
+
++ prettier.config.js
+
+$
+module.exports = {
+  plugins: [
+    require('prettier-plugin-tailwindcss')
+  ]
+}
+
+
+- eh uma ferramenta para deixar nosso codigo mais bonito
+
+
+# Mobile
+
+ Configuration
+ 
+https://react-native.rocketseat.dev/
+
+- iniciando projeto
+
+$ npx create-expo-app mobile
+
+$ npm run start
+
+https://react-native.rocketseat.dev/expo-managed/linux
+
+https://react-native.rocketseat.dev/android/linux
+
+https://react-native.rocketseat.dev/virtual-devices/android-emulator
+
+
+### Executar no celular
+$ npx expo start
+
+
+Para instalá-lo no seu emulador, basta executar o comando npx expo start e escolher qual emulador você deseja executar. Caso o Expo GO não esteja instalado, ele irá solicitar a sua autourização para instalar a versão necessária.
+
+
+https://react-native.rocketseat.dev/virtual-devices/android-emulator
+
+
+### executar Android Studio
+
+	Terminal
+**/home/krasny/android-studio/bin
+
+$ ./studio.sh
+
+### Tags mobile
+
+
+$
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Hello World</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  text: {
+    color: '#FFF',
+    fontWeight: '700',
+    fontSize: 48,
+  },
+});
+
+
+### Tailwind mobile
+
+	NativeWind
+	
+https://www.nativewind.dev/
+
+	Configurando
+https://www.nativewind.dev/quick-starts/expo
+
+- Dependencies Install
+
+$ npm i nativewind
+
+$ npm i tailwindcss -D
+
+$ npx tailwindcss init
+
+-
+2. Setup Tailwind CSS
+
+Run npx tailwindcss init to create a tailwind.config.js file
+
+Add the paths to all of your component files in your tailwind.config.js file. Remember to replace <custom directory> with the actual name of your directory e.g. screens.
+
+// tailwind.config.js
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./App.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+3. Add the Babel plugin
+
+Modify your babel.config.js
+
+// babel.config.js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ["babel-preset-expo"],
++   plugins: ["nativewind/babel"],
+  };
+};
+
+### usando Typescript
+
+https://www.nativewind.dev/getting-started/typescript
+
+**tsconfig.json**
+$ 
+{
+  "compilerOptions": {
+    "types": [
+      "nativewind/types"
+    ]
+  },
+  "extends": "expo/tsconfig.base"
+}
+
+
+### reload application
+
+- install eslint
+
+$ npm i eslint @rocketseat/eslint-config -D
+
++ /.eslintrc.json
+
+$ 
+{
+  "extends": [
+    "@rocketseat/eslint-config/react"
+  ]
+}
+
+
+- install plugin prettier
+
+$ npm i prettier-plugin-tailwindcss -D
+
++ prettier.config.js
+
+$
+module.exports = {
+  plugins: [require('prettier-plugin-tailwindcss')],
+}
+
+
+
+### Web keep
+
+- Font configure - google fontes
+ Utilizamos o next font
+
+ Sua vantagem eh que ele evita um comportamento na web, que chamamos de "Layout Shift"
+ Layout Shift eh quando voce abre um site, quando ele carrega uma fonte padrao pra depois carregar a fonte programada 
+ 
+ 
+- Estrura visual da Home
+
+
+- Importando cores
+
+
+- page colun Left and Right
+
+- blur background
+
+- strips
+
++ src/assets/bg-stars.svg
+
+
+- Install package icons
+
+$ npm i lucide-react
+
+
+### mobile keep
+
+$ npm run start
+
+- Iremos usar um package
+	 Expo Google Fonts
+	 
+$ npx expo install @expo-google-fonts/roboto @expo-google-fonts/bai-jamjuree expo-font 
+
+- Uso do css no mobile
+
+ Utilizamos uma biblioteca chamada Yoga 
+ 
+ 
+ 
++ src/assets/assets.d.ts 
+
+$ declare module '*.png'
+
+ arquivos com esse formato significa que dentro desse arquivo, vou ter apenas typeScript, parte de typagem 
+ Isso vai fazer que com todo o arquivo que termine com png, eh um arquivo que eu posso importar 
+ 
+ 
+  
+ 
+- para importar o svg no react-native precisamos de um package
+
+https://docs.expo.dev/ui-programming/using-svgs/
+
+$ npx expo install react-native-svg
+
+https://github.com/kristerkari/react-native-svg-transformer
+
+$ npm i -D react-native-svg-transformer
+
+ Permite importar svg para a aplicacao
+
+
+- Quando instalamos alguns package no React Native
+as vezes precisamos re-startar o ReactNative
+ Opcao para limpar o cache 
+
+$ npm run start --clear
+
+
+
+### Server keep
+
+- Vamos pensar na estrutura do bando de dados da nossa aplicacao
+
+ Criando novos relacionamentos no banco de dados
+ 
+ **schema.prisma**
+
+- comando para fazer as alteracoes no banco de dados
+$ npx prisma migrate dev
+
+
+- abrindo prisma studio
+
+$ npx prisma studio
+
+$ npx prisma migrate reset
+
+$ npx prisma migrate dev
+
+$ create memories table
+
+
+
+- Criando CRUD basico de momorias
+ CRUD = create read update delete
+ 
+ Vamos fazer toda a parte de gestao de memorias aqui dentro
+ 
+ 
++ src/routes/memories.ts
+
++ src/lib/prisma.ts
+
+
+$ npm run dev
+
+$  http localhost:4444/users
+
+$ npx prisma studio
+
+ Vamos criar uma memoria 
+ Antes precisamos criar um usuario
+ 
+- biblicoteca Zod
+ ela 
+$ npm i zod
+
+- mostra no terminal o conteudo em memories
+$ http localhost:4444/memories
+
+- Pega o id da memoria desejada
+$ http localhost:4444/memories/7547402b-c6f4-4ab6-b0e8-8d0a354c95b9
