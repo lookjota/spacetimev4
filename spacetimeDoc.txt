@@ -577,3 +577,18 @@ $ http POST http://localhost:4444/memories content=test coverUrl=https://github.
 
  Ele criou o nosso insert no banco de dados, 
  Criou la dentro a nossa memoria
+ 
+- pegar o id da memoria recem criada
+$ http localhost:4444/memories
+
+
+- PUT atualizando conteudo / content
+
+$ http PUT http://localhost:4444/memories/60769491-7700-4ccb-9e2f-9bc4afcf6256 content=oiii coverUrl=https://github.com/diego3g.png isPublic=1 --json
+
+- DELETE rota test 
+ Test ok
+$ http DELETE http://localhost:4444/memories/60769491-7700-4ccb-9e2f-9bc4afcf6256
+
+- GET Listando todas as memorias
+$ http GET localhost:4444/memories
