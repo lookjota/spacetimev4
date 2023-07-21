@@ -570,3 +570,10 @@ $ http localhost:4444/memories
 
 - Pega o id da memoria desejada
 $ http localhost:4444/memories/7547402b-c6f4-4ab6-b0e8-8d0a354c95b9
+
+
+- Request POST
+$ http POST http://localhost:4444/memories content=test coverUrl=https://github.com/lookjota.png isPublic=1 --json
+
+ Ele criou o nosso insert no banco de dados, 
+ Criou la dentro a nossa memoria
