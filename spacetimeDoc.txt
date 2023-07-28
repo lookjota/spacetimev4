@@ -725,10 +725,20 @@ $
  $ npm i dotenv
 
  **Terminal**
-$ http POST localhost:4444/register code=0e1c83c0ef78e41dd4f0 --json
+$ 
+ http POST localhost:4444/register code=0e1c83c0ef78e41dd4f0 --json
 
 
+ **auth.ts**
+ 
+- testando fazendo autentificacao do usuario
+ **terminal**
+$ 
+ http POST localhost:4444/register code=cd19acc4296fb9e21ebe --json
 
+- tanto se eu rodar prisma studio
 
+ $ npx prisma studio
+ 
 
 
