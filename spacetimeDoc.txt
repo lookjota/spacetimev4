@@ -595,9 +595,140 @@ $ http GET localhost:4444/memories
 
 - install Pluguins Cors
  Cors eh uma tecnica de seguranca que temos no back-end,
-para determinar qual rls ou quais enderecos vao poder acessar a nossa api
+para determinar quais rls ou quais enderecos vao poder acessar a nossa api
  Como estamos construindo o front separado do back, precisamos instalar o cors para instruir o nosso back-end em quais front ends / em quais url de front-end o nosso back-end vai poder ser acessado
  
 $ npm i @fastify/cors
 
 **server.ts**
+
+### Web keep
+
+### app art excalidraw - desenhar usando as maos
+- excalidraw.com
+
+- Protocolo de autentificacao
+ OAuth
+
+ Usando o Oauth eu posso logar o usuario na minha aplicacao usando a conta dele de outra aplicacao que no caso eh o github
+ 
+ O user vai poder se autenticar tanto no mobile quando no front-end para usar recursos do nosso back-end 
+ 
+ Vao existir algumas rotas do nosso back-end que o user so vai poder acessar quando estiver autenticado 
+ 
+Como vai funcionar
+ 1. O user vai clicar no front-end para fazer loguin, 
+ 2. Sera direcionado para pagina de login do GitHub
+ 3. Logar no banco de dados do Github
+ 4. Vai devolver o user para o front-end - redirecionamento 
+ 5. O Github envia junto, um codigo, esse codigo vem na url, ele eh um ?code=asdj123d7sa e esse codigo eh super importante.
+ Ele eh um codigo que podemos trocar ele por um access tolken 
+ Access Tolken eh um tolken que permite agente identificar o usuario no Github e buscar informacoes desse usuario como, perfil, email
+ 6. Com esse codigo em maos, vamos envia-lo para o beck-end, entao o beck-end ira receber esse codigo
+ 7. vai chamar a API do Github, falando,
+ Esse codigo aqui pertence a qual user ?
+ e o Github vai devolver um access tolken
+ Access tolken eh o que permite identificar o user e fazer chamadas para Github como se fosse aquele user
+ 8. fazendo o chamado da rota /user do Github e essas info, serao salvar dento do banco de dados do nosso back-end
+ 9. Mobile, tera o mesmo processo do front-end
+ Que eh precisar fazer a requisicao com o Github
+ A maior difenca eh que nao iremos redirecionar o user, iremos usar API do react Native WebBrowser, que permite agente abrir o navegador em cima da aplicacao 
+ Mas o fluxo eh muito semelhante 
+ 
+ ![](../../../../Pictures/fluxoApp.png)
+ 
+### Fluxo de Autentificacao
+
+- Criar um aplicacao no Github
+
+ + login GitHub
+ + settings
+ + Developer Settings
+ + OAuth Apps
+ + New OAuth App
+ + 
+$ 
+Application name:
+ Spactime (DEV)
+ SpactimeV1 (DEV)
+HomePage URL:
+ http://localhost:3000
+Authorization callback URL:
+ http://localhost:3000/api/auth/callback
+
+ + Register application 
+
+- Vai devolver duas informacoes que sao muito importantes 
+
+$
+Client ID:
+ ************
+Client secrets:
+ ********
+
+
+Client ID
+27da4754828629edf94a
+
+Client secrets
+fb2df464aaaf705030213ab365193c392b70b7ab
+
+
+- Copiar Client ID 
+
+- criando arquivo para salvar informacoes
+
+ + .env.local
+ **.env.local**
+
+$
+# Github
+NEXT_PUBLIC_GITHUB_CLIENT_ID=27da4754828629edf94a
+
+
+### Server little keep
+
+ **.env**
+ 
+$
+# Database
+DATABASE_URL="file:./dev.db"
+
+# Github
+GITHUB_CLIENT_ID="27da4754828629edf94a"
+GITHUB_CLIENT_SECRET="fb2df464aaaf705030213ab365193c392b70b7ab" 
+
+
+### Web keep
+
+ **page.tsx**
+$
+
+ + src/components/Copyright.tsx
+ + src/components/Hero.tsx
+ + src/components/Signin.tsx
+ + src/components/EmptyMemories.tsx
+ 
+### Server keep
+
+ **server.ts**
+
+ + src/routes/auth.ts
+ 
+- install axios, melhor forma de fazer
+ Requisicoes HTTP
+ 
+ $ npm i axios
+ 
+- install dotenv
+ 
+ $ npm i dotenv
+
+ **Terminal**
+$ http POST localhost:4444/register code=0e1c83c0ef78e41dd4f0 --json
+
+
+
+
+
+
