@@ -741,4 +741,112 @@ $
  $ npx prisma studio
  
 
+### Criacao de token JWT
 
+- O problema eh que nessa rota de cadastro do usuario
+ Conseguimos garantir que o user eh ele mesmo, pq aqui dentro eu tenho access_token do github
+ Esse access_token me permite fazer novas requisicoes inclusive no github, caso eu precise
+ 
+ - So que tem um problema, esse eccess_token ele expira, ele tem um tempo de expiracao ate que rapido.
+ Menos de 1 dia o access_token ja expira.
+ Nao posso depender dessa informacao para garantir que o usuario ele continua logado na nossa aplicacao 
+ 
+ Entao vou o que eu vou precisar fazer aqui no back-end, 
+ Vou precisar trabalhar com algo que chamamos no contexto de autentificacao, de JWT
+ 
+ JWT - JSON Web Token
+ 
+ Eh basicamente um Token criado pelo nosso back-end, enviado pro front-end, 
+ Pro front-end usar este token nas requisicoes que ele faz pro back-end pra gente identificar um usuario logado
+ 
+ou seja
+ 
+ Quando fizemos esse processo de cadastro do usuario, agente vai criar tambem pro front-end um JWT
+ 
+ Eh um Token que o front-end vai poder usar, por quando tempo agente decidir, que o usuario vai ficar logado
+ 
+ O front-end vai guardar essa informacao la
+ 
+  nos cookies ou na memoria
+ 
+ E toda vez que o front-end fizer uma requisicao pro back-end, ele vai enviar esse token junto e o back-end vai saber que esse token, pertence a tal user
+ 
+ou seja
+
+ Identificar esse user nas proximas requisicoes
+ 
+
+- Install package fastify/jwt
+
+$ npm i @fastify/jwt
+ 
+ **sever.ts**
+- Esse secret
+ Eh super importante,
+ ele eh uma maneira de diferenciar os Tokens gerados
+ os JWT gerados por este back-end de outros JWTs gerados por outros beck-ends
+ 
+ Eh como se fosse uma forma de criptografia do Token
+ 
+ou seja
+
+ O Token vai ser assinado com esta palavra que eu colocar aqui dentro 
+
+$ 
+app.register(jwt, {
+  secret: 'spacetime',
+})
+
+ **auth.ts**
+ 
+$
+ const token = app.jwt.sign({
+ 
+ }, {})
+ 
+- Daqui de dentro eu vou passar pra ele dois objetos 
+ O primeiro objeto eh, quais informacoes do usuario que eu quero que estejao contidas dentro do Token,
+ Aqui eh importante, pq eu so vou colocar informacoes dentro do Token, que sao publicas, 
+ Que nao sao sensiveis
+ Nao sera colocado senha ou informacoes importantes
+ 
+ Pq o Token nao eh criptografado, apenas assinado
+ 
+ou seja
+
+ Qualquer pessoa consegue ver as informacoes que estao contidas dentro dele 
+ 
+ A informacoes colocadas dentro do Token sao informacoes que eu quero deixar visiveis na minha aplicacao
+ Coloca esses dados que tu quer que seja publico do usuario no Toke
+ 
+ + nome do user
+ + avatar_utl
+
+ Outra coisa que eh importante que nesse segundo objeto de configuracao eu passar 2 info
+ 
+$
+    const token = app.jwt.sign({
+      name: user.name,
+      avatarUrl: user.avatartUrl,
+    }, {
+      sub: user.id,
+      expiresIn: '30 days',
+    })
+ 
+- sub eh a qual usuario pertence esse Token
+ Agente coloca uma informacao que seja unica nesse usuario, como o ID
+ Outra info eh o expireIn
+ 
+- expireIn eh quanto tempo esse Token vai durar, podemos colocar por 30 days
+
+
+- fazendo novo teste a requisicao
+
+ **Terminal**
+$
+ http POST localhost:4444/register code=2a0708db1d87184f55d8 --json
+ 
+- O Token foi gerado com sucesso!
+
+
+- jwt.io
