@@ -849,4 +849,26 @@ $
 - O Token foi gerado com sucesso!
 
 
-- jwt.io
+- jwt.io para ver como funciona o jwt por dentro
+ 
+ Pegando o token gerado do user voce jogar sem as aspas dentro do site e ele mostra todas as informacoes disponiveis dentro do token
+ 
+
+ **memories.ts**
+- jwtVerify() 
+ O que essa funcao faz, ela garante que na requisicao que o front-end ta fazendo para essa rota aqui, esta vindo do token de autentificacao dele,
+ Se o token nao esta vindo, ela bloqueia, ela nao deixa o restante do codigo proceguir
+$
+  app.get('/memories', async (request) => {
+    await request.jwtVerify()
+
+- Testando requisicoes
+
+ httpie
+ **Terminal**
+$ http -A bearer -a eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9hbyBDYXJsb3MgTGlzYm9hIiwiYXZhdGFyVXJsIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91Lzc3NzUwOTYwP3Y9NCIsInN1YiI6IjIyOGVkZDQ1LWMzNGItNGMzNy05MDExLWI4ODY1YjY1YmQ0ZiIsImlhdCI6MTY5MDUxNTEzNCwiZXhwIjoxNjkzMTA3MTM0fQ.pLQJGMKVP-K8x0LfRQRoSGcWnr8xIX5mA3TwLH2DU30 localhost:4444/memories
+
+
+
+
+
