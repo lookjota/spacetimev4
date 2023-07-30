@@ -870,5 +870,19 @@ $ http -A bearer -a eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9hbyBDYXJ
 
 
 
+### Web keep
+
++ app/api/auth/callback/route.ts
+
+- install package Axios
+
+$ npm i axios
+
++ src/lib/api.ts
+
+
+
+
+
 
 
