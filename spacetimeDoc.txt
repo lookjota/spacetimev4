@@ -897,6 +897,35 @@ https://app.rocketseat.com.br/plus/lesson/aula-03-integrando-ui-com-bibliotecas-
 
 
 
+### Mobile keep
+
+- Vamos trabalhar com um package do expo chamado 
+ Expo AuthSession
+ Eh a maneira mais facil de adiconar web browser based authentication
+ 
+  + OAuth flows
+ 
+- search google
+$ expo auth session
+
+https://docs.expo.dev/versions/latest/sdk/auth-session/?utm_source=google&utm_medium=cpc&utm_content=performancemax&gclid=Cj0KCQjw2qKmBhCfARIsAFy8buL3mKcf5KVDGYCqXQwOJ9-85VFfQXZ6BkbuXzhHV8LWJpUtg90lcvYaAhBSEALw_wcB
+
+- Terminal
+$ npx expo install expo-auth-session expo-crypto
+
+**app.json**
+$
+
+l5 "scheme": "nlwspacetime",
+
+- go to authentication guide
+
+https://docs.expo.dev/guides/authentication/#github
 
 
+Client ID
+66a50407cb6aa6bb59cf
 
+
+- terminal - depois de fazer muitas alteracoes
+$ npx expo start --clear
