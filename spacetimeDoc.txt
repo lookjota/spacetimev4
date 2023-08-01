@@ -874,12 +874,26 @@ $ http -A bearer -a eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9hbyBDYXJ
 
 + app/api/auth/callback/route.ts
 
-- install package Axios
 
+- install package Axios
 $ npm i axios
+
 
 + src/lib/api.ts
 
+
++ src/components/Profile.tsx
+
+
+- Install package jwt-decode
+$ npm i jwt-decode
+
+
++ src/lib/auth.ts
+
+https://app.rocketseat.com.br/plus/lesson/aula-03-integrando-ui-com-bibliotecas-trilha-ignite
+
+-33:26 time to return
 
 
 
