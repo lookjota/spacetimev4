@@ -950,6 +950,7 @@ GITHUB_CLIENT_SECRET="811987be8237ca6746a3d5468f6c9e68a1671e5c"
 $ npm run dev
 
 
+### mobile keep
 - Vamos usar um package chamado
  Expo Secure Store
  
@@ -981,3 +982,58 @@ $
     }
   }
 }
+
+- Install package Expo Router
+
+https://docs.expo.dev/routing/installation/
+
+$ npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar react-native-gesture-handler
+
+**package.json**
+ Change to this code
+$
+{
+ "main": "expo-router/entry"
+}
+
++ index.js
+
+**package.json**
+$
+  "overrides": {
+    "metro": "0.76.0",
+    "metro-resolver": "0.76.0"
+  },
+  "private": true
+
+- configurar plugin babel
+
+**babel.config.js**
+$
+module.exports = function (api) {
+  api.cache(true)
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['nativewind/babel', 'expo-router/babel'],
+  }
+}
+
+or
+
+module.exports = function (api) {
+  api.cache(true)
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['nativewind/babel', require.resolve('expo-router/babel')],
+  }
+}
+
+
++ app/index.tsx
+
+- app.tsx
+
+- Terminal
+$ npx expo start --clear
+
++ app/memories.tsx
