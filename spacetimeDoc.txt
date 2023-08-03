@@ -1054,3 +1054,16 @@ $ npm run dev
 + src/app/memories/new/page.tsx
 
 + src/app/api/auth/logout.ts
+
+- install package Tailwind forms
+serve para aplicacao de css em formularios
+**Terminal**
+$ npm install -D @tailwindcss/forms
+
+**tailwind.config.js**
+$
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+}
+
