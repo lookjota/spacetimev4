@@ -1037,3 +1037,20 @@ module.exports = function (api) {
 $ npx expo start --clear
 
 + app/memories.tsx
+
+
+- Layout routes, tanto no Web quando Mobile
+
+### Server keep
+- Comecar deixando o back-end rodando
+ Como vamos mexer na aplicacao web, 
+eh importante que nas variaveis ambiente, comente todas as variaveis ambiente mobile, deixando a Web do git
+**Terminal**
+$ npm run dev
+
+
+### Web keep
+
++ src/app/memories/new/page.tsx
+
++ src/app/api/auth/logout.ts
