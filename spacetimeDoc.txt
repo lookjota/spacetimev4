@@ -1067,3 +1067,7 @@ $
   ],
 }
 
+
+- Middleware, quando queremos interceptar o acesso de um user a uma determinada rota
+
++ src/middleware.ts
