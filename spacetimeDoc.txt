@@ -1071,3 +1071,13 @@ $
 - Middleware, quando queremos interceptar o acesso de um user a uma determinada rota
 
 + src/middleware.ts
+
+### mobile keep
+
+- ir no back-end e habilitar as credenciais do github mobile
+
++ app/_layout.tsx
+
+
+- Terminal
+$ npx expo start --clear
