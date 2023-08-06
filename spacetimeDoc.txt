@@ -1084,3 +1084,70 @@ $ npx expo start --clear
 
 
 + app/new.tsx
+
+### Server keep
+
+- install package plugin beck-end @fastigy/multipart
+ Esse plugin abilita o fastify a entender o wodpart data
+que eh a forma de envio de informacoes do front pro back-end,
+onde eh permitido o envio de qualquer tipo de dado.
+
+ Multipart form data, eh o padrao de envio de informacoes de quando eu dou um submit no formulario.
+
+**Terminal**
+ $ npm i @fastify/multipart
+ 
++ src/router/upload.ts
+
+
+https://github.com/fastify/fastify-multipart
+
+- Mimitype 
+ Todo arquivo possui um mimitype,
+Ele eh um categorizacao global de tipos de arquivos,
+para saber se ele eh video ou imagem
+ O mimitype dele tem que comecar com imagem ou video
+
+- para fazer o upload
+
+**Terminal**
+$ http POST localhost:4444/memories file@~/Pictures/fluxoApp.png -f
+ 
+- rota correta de test eh upload
+**Terminal**
+$ http POST localhost:4444/upload file@~/Pictures/fluxoApp.png -f
+
+
++ /uploads
+
+
+- pipeline, ele permite eu aguardar uma stream, um processo de upload finalizar
+ Eu consigo verificar quando um processo chegou ate o final
+ 
+ A maioria das funcoes do node nao usa elas nao usam Promises
+que eh a API, mais recomendada do TypeScript pra gente saber quando as coisas acabaram
+
+- entao esse Promisify, ele transforma algumas funcoes do node mais antigas que ainda nao tinham suporte a promisis para promisis
+
+
+- Fazer aquela requisicao dinovo
+**Terminal**
+$ http POST localhost:4444/upload file@~/Pictures/fluxoApp.png -f
+
+ 
+- Em 99% dos casos nao faz sentido fazer o upload como estamos fazendo aqui salvando esse arquivo no disco, so que isso eh muito ruim, por diversos motivos
+ Na maioria das vezes eh legal salvarmos isso aqui em um servico especifico para upload de arquivos e existem varios hoje em dia
+ 
+ > Cloudflare R2
+ > Amazon s3
+ > Google GCS
+ 
+Aqui nao iremos usar isso pela burocracia de cadastrar cartao de credito e tudo mais
+ Dai iremos fazer da forma mais facil mesmo
+ 
+- Vamos instalar um outro modulo
+ @fastify/static
+**Terminal**
+$ npm i @fastify/static
+
+ Com esse package eu consigo fazer com que uma pasta do meu back-end fique publica e ai eu consigo acessar os arquivos dela, com localhost
