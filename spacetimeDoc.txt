@@ -1151,3 +1151,11 @@ Aqui nao iremos usar isso pela burocracia de cadastrar cartao de credito e tudo 
 $ npm i @fastify/static
 
  Com esse package eu consigo fazer com que uma pasta do meu back-end fique publica e ai eu consigo acessar os arquivos dela, com localhost
+ 
+
+### Web keep
+
+**Terminal**
+$ npm run dev
+
++ src/compoents/MediaPicker.tsx
