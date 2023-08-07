@@ -1186,5 +1186,9 @@ $ npm run start
  Facilitar trabalhar com selecao de imagem e video da galeria
 $ npx expo install expo-image-picker
 
+- Install package dayjs
+ Para manipular data 
+$ npm i dayjs
+
 
 - time -54:11
