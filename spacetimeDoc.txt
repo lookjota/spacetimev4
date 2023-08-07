@@ -1159,3 +1159,16 @@ $ npm i @fastify/static
 $ npm run dev
 
 + src/compoents/MediaPicker.tsx
+
++ src/components/NewMemoryForm.tsx
+
+- install package js-cookie
+**Terminal**
+$ npm i js-cookie
+$ npm i --save-dev @types/js-cookie
+
+ Facilita buscar os cookies de dentro document.cookie
+ 
+- Server keep
+**Terminal**
+$ npx prisma studio
