@@ -1172,3 +1172,19 @@ $ npm i --save-dev @types/js-cookie
 - Server keep
 **Terminal**
 $ npx prisma studio
+
+
+### Mobile keep
+
+- start server
+$ npm run dev
+
+- start mobile
+$ npm run start
+
+- Install package expo-image-picker
+ Facilitar trabalhar com selecao de imagem e video da galeria
+$ npx expo install expo-image-picker
+
+
+- time -54:11
